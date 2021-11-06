@@ -1,0 +1,175 @@
+{
+  "usuario": {
+    "id": 1,
+    "nome": "Emersson Cardim Mota",
+    "email": "emersson@gmail.com",
+    "foto": "https://lh3.googleusercontent.com/ogw/ADea4I5qMcY86xwHtETBfMw_DniEqEZmnvbNp8sgWkPEtw=s83-c-mo",
+    "categorias": [{
+        "titulo": "Música",
+        "cor": "#9cd33b",
+        "videos": [{
+            "titulo": "Guns N' Roses - November Rain",
+            "url": "https://youtu.be/8SbUC-UaAxE"
+
+          }, {
+            "titulo": "Avicii - Wake me up",
+            "url": "https://youtu.be/IcrbM1l_BoI"
+          },
+          {
+            "titulo": "David Guetta - Titanium ft. Sia",
+            "url": "https://youtu.be/JRfuAukYTKg"
+          },
+          {
+            "titulo": "Swedish House Mafia ft. John Martin - Don't You Worry Child",
+            "url": "https://youtu.be/1y6smkh6c-0"
+          },
+          {
+            "titulo": "Metallica: Nothing Else Matters",
+            "url": "https://youtu.be/tAGnKpE4NCI"
+          }
+        ]
+      }, {
+        "titulo": "Front End",
+        "cor": "#6BD1FF",
+        "videos": [{
+            "titulo": "O que faz uma desenvolvedora front-end? #HipstersPontoTube",
+            "url": "https://www.youtube.com/watch?v=ZY3-MFxVdEw"
+          },
+          {
+            "titulo": "SEO com React",
+            "url": "https://www.youtube.com/watch?v=c8mVlakBESE"
+          },
+          {
+            "titulo": "Componentização com VanillaJS #AluraMais",
+            "url": "https://www.youtube.com/watch?v=LatCKpcOMak"
+          },
+          {
+            "titulo": "Pare de chutar e aprenda a display: inline #01",
+            "url": "https://www.youtube.com/watch?v=5PS6ku8NzIE"
+          },
+          {
+            "titulo": "Template String: Interpolando strings com JavaScript #AluraMais",
+            "url": "https://www.youtube.com/watch?v=ORI_HTXaIw0"
+          },
+          {
+            "titulo": "Qual é a melhor linguagem de programação? #HipstersPontoTube",
+            "url": "https://www.youtube.com/watch?v=Uh-GNH-t89w"
+          },
+          {
+            "titulo": "Novidades do Angular v9",
+            "url": "https://www.youtube.com/watch?v=34uHo7hFmG0"
+          },
+          {
+            "titulo": "Base para aprender os frameworks",
+            "url": "https://www.youtube.com/watch?v=QzDjdlF1BQI"
+          }
+        ]
+      },
+      {
+        "titulo": "Back End",
+        "cor": "#00C86F",
+        "videos": [{
+            "titulo": "PERCURSO em NÍVEL em ÁRVORE BINÁRIA | Estruturas de Dados #14",
+            "url": "https://www.youtube.com/watch?v=UOK7nS2E9xM"
+          },
+          {
+            "titulo": "Coders4Tips - S01E04: GitHub CLI - Uma Nova Experiência no Github!",
+            "url": "https://www.youtube.com/watch?v=6o6-bKOZOEY"
+          },
+          {
+            "titulo": "Programei 4 robôs que criam vídeos para mim no YouTube",
+            "url": "https://www.youtube.com/watch?v=kjhu1LEmRpY"
+          },
+          {
+            "titulo": "API: Dicionário do Programador",
+            "url": "https://www.youtube.com/watch?v=vGuqKIRWosk"
+          },
+          {
+            "titulo": "Usando Git Direito",
+            "url": "https://www.youtube.com/watch?v=6OokP-NE49k"
+          }
+        ]
+      },
+
+      {
+        "titulo": "Filmes",
+        "cor": "orange",
+        "videos": [{
+            "titulo": "Interestellar",
+            "url": "https://www.youtube.com/watch?v=frD_IiY_A3E"
+          },
+          {
+            "titulo": "Gattaca",
+            "url": "https://www.youtube.com/watch?v=Dl0tYLbrhhs"
+          },
+          {
+            "titulo": "A Chegada",
+            "url": "https://www.youtube.com/watch?v=rNciXGzYZms"
+          },
+          {
+            "titulo": "Feitiço do Tempo",
+            "url": "https://www.youtube.com/watch?v=zi8d69P9NvI"
+          }
+        ]
+      },
+      {
+        "titulo": "Games",
+        "cor": "red",
+        "videos": [{
+            "titulo": "Final Fantasy 7",
+            "url": "https://www.youtube.com/watch?v=I_ATSCTnUD8"
+          },
+          {
+            "titulo": "Assassins Creed Valhalla",
+            "url": "https://www.youtube.com/watch?v=KDfdjB9uL0U"
+          },
+          {
+            "titulo": "God of War 4",
+            "url": "https://www.youtube.com/watch?v=FyIwEFXOcaE"
+          },
+          {
+            "titulo": "Resident Evil 8",
+            "url": "https://www.youtube.com/watch?v=JSapXD9vxYA"
+          },
+          {
+            "titulo": "Pokémon Let's Go Pikachu/Eevee",
+            "url": "https://www.youtube.com/watch?v=L56q_k2ydrs"
+          }
+        ]
+      },
+      {
+        "titulo": "Séries",
+        "cor": "#6b5be2",
+        "videos": [{
+            "titulo": "The Office",
+            "url": "https://youtu.be/gO8N3L_aERg"
+          },
+          {
+            "titulo": "Trailer You",
+            "url": "https://youtu.be/_fgsR2i97hs"
+          },
+          {
+            "titulo": "Trailler The Boys",
+            "url": "https://youtu.be/tcrNsIaQkb4"
+          },
+          {
+            "titulo": "Trailer Game of thrones",
+            "url": "https://youtu.be/KPLWWIOCOOQ"
+          },
+          {
+            "titulo": "Trailer Westworld",
+            "url": "https://youtu.be/jBfOlQrko0c"
+          },
+          {
+            "titulo": "Trailer Invencivel",
+            "url": "https://youtu.be/chcPVeszoUo"
+          },
+          {
+            "titulo": "Trailer Black Mirror",
+            "url": "https://youtu.be/JG301LECC_s"
+          }
+        ]
+      }
+    ]
+  }
+}
