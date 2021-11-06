@@ -11,7 +11,6 @@ interface CarouselProps {
 function Carousel({ ignoreFirstVideo, category }: CarouselProps) {
   const categoryTitle = category.titulo;
   const categoryColor = category.cor;
-  const categoryExtraLink = category.link_extra;
   const videos = category.videos;
   return (
     <VideoCardGroupContainer>
@@ -20,11 +19,6 @@ function Carousel({ ignoreFirstVideo, category }: CarouselProps) {
           <Title style={{ backgroundColor: categoryColor || "red" }}>
             {categoryTitle}
           </Title>
-          {categoryExtraLink && (
-            <ExtraLink href={categoryExtraLink.url} target="_blank">
-              {categoryExtraLink.text}
-            </ExtraLink>
-          )}
         </>
       )}
       <Slider>
