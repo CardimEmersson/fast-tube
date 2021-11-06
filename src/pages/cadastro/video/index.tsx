@@ -1,7 +1,6 @@
 import { PageDefault } from "components/PageDefault";
-import { Container } from "./styles";
+import Container from "./styles";
 import { Title } from "components/Title";
-import { ButtonLink } from "components/Menu/ButtonLink";
 import { FormField, ButtonSubmit } from "components/FormField";
 import { FormEvent, useState } from "react";
 
