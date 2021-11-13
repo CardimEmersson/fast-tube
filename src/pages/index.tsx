@@ -5,6 +5,7 @@ import type { NextPage } from "next";
 import baseData from "../data/db.json";
 import dadosIniciais from "../data/dados_iniciais.json";
 import { Footer } from "components/Footer";
+import { withSSRAuth } from "utils/withSSRAuth";
 
 const Home: NextPage = () => {
   return (
@@ -40,3 +41,9 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+export const getServerSideProps = withSSRAuth(async (ctx) => {
+  return {
+    props: {},
+  };
+});

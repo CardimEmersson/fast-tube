@@ -3,6 +3,7 @@ import Container from "./styles";
 import { Title } from "components/Title";
 import { FormField, ButtonSubmit } from "components/FormField";
 import { FormEvent, useState } from "react";
+import { withSSRAuth } from "utils/withSSRAuth";
 
 function CadastroVideo() {
   const [titulo, setTitulo] = useState("");
@@ -54,3 +55,9 @@ function CadastroVideo() {
 }
 
 export default CadastroVideo;
+
+export const getServerSideProps = withSSRAuth(async (ctx) => {
+  return {
+    props: {},
+  };
+});

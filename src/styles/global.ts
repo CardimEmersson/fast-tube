@@ -11,6 +11,9 @@ const GlobalStyles = createGlobalStyle`
   --white: #FFFFFF;
   --frontEnd: #6BD1FF;
   --backEnd: #00C86F;
+  --google: #DB4437;
+  --facebook: #4267B2;
+  --github: #171515;
 }
 
 * {

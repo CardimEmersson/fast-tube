@@ -10,9 +10,6 @@ interface FormFieldProps {
 }
 
 function FormField({ label, type, name, value, onChange }: FormFieldProps) {
-  const isTypeTextArea = type === "textarea";
-  const tag = isTypeTextArea ? "textarea" : "input";
-
   return (
     <FormFieldWrapper>
       <Label>

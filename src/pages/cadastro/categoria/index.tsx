@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageDefault } from "components/PageDefault";
 import { FormField, ButtonSubmit } from "components/FormField";
 import { Title } from "components/Title";
+import { withSSRAuth } from "utils/withSSRAuth";
 
 interface CategoriasProps {
   nome: string;
@@ -92,3 +93,9 @@ function CadastroCategoria() {
 }
 
 export default CadastroCategoria;
+
+export const getServerSideProps = withSSRAuth(async (ctx) => {
+  return {
+    props: {},
+  };
+});
