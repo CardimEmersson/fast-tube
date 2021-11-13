@@ -1,5 +1,8 @@
 # fast-tube
 
+## Deploy do projeto
+[Deploy Vercel](https://fast-tube.vercel.app/)
+
 ## Descrição do projeto
 [Link Google Drive](https://drive.google.com/file/d/13sYavsF3775GKQSH_Xx1Y_pjUyBsiII9/view?usp=sharing)
 
