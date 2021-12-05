@@ -53,3 +53,13 @@ export const VideoCardGroupContainer = styled.section`
   margin-left: 5%;
   margin-bottom: 2rem;
 `;
+
+export const IconUser = styled.img`
+  position: absolute;
+  top: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+`;

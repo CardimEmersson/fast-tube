@@ -48,7 +48,7 @@ export const Category = styled.h1`
 `;
 
 export const Description = styled.p`
-  font-size: 1.5rem;
+  font-size: 1rem;
 
   @media (max-width: 800px) {
     display: none;

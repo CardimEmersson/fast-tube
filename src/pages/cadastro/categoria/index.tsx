@@ -1,94 +1,72 @@
-import { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import Link from "next/link";
+import { useState, FormEvent } from "react";
 import { PageDefault } from "components/PageDefault";
 import { FormField, ButtonSubmit } from "components/FormField";
+import axios, { AxiosError } from "axios";
 import { Title } from "components/Title";
 import { withSSRAuth } from "utils/withSSRAuth";
-
-interface CategoriasProps {
-  nome: string;
-  descricao: string;
-  cor: string;
-}
+import { toast } from "react-toastify";
+import { Form } from "components/FormField/styles";
+import { SpinnerLoader } from "components/SpinnerLoader";
 
 function CadastroCategoria() {
-  const [categorias, setCategorias] = useState<CategoriasProps[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [title, setTitle] = useState("");
+  const [color, setColor] = useState("");
 
-  const [nome, setNome] = useState("");
-  const [descricao, setDescricao] = useState("");
-  const [cor, setCor] = useState("");
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setCategorias([
-      ...categorias,
-      {
-        nome,
-        descricao,
-        cor,
-      },
-    ]);
-    setNome("");
-    setDescricao("");
-    setCor("");
+    setIsLoading(true);
+
+    await axios
+      .post("/api/create/category", {
+        title,
+        color,
+      })
+      .then((res) => {
+        toast.success(res.data.message);
+        setTitle("");
+        setColor("");
+      })
+      .catch((err: AxiosError) => {
+        if (err.response?.data.message) {
+          toast.error(err.response?.data.message);
+        } else {
+          toast.error("Não foi possivél cadastrar a categoria");
+        }
+      });
+
+    setIsLoading(false);
   }
 
-  // ============
-
-  // useEffect(() => {
-  //   if (window.location.href.includes("localhost")) {
-  //     const URL = "http://localhost:8080/categorias";
-  //     fetch(URL).then(async (respostaDoServer) => {
-  //       if (respostaDoServer.ok) {
-  //         const resposta = await respostaDoServer.json();
-  //         setCategorias(resposta);
-  //         return;
-  //       }
-  //       throw new Error("Não foi possível pegar os dados");
-  //     });
-  //   }
-  // }, []);
-
   return (
-    <PageDefault>
-      <Title>Cadastro de Categoria</Title>
+    <>
+      <PageDefault>
+        <Title>Cadastro de Categoria</Title>
 
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          marginTop: "32px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-        }}
-      >
-        <FormField
-          label="Nome da Categoria"
-          type="text"
-          name="nome"
-          value={nome}
-          onChange={(e) => setNome(e.currentTarget.value)}
-        />
+        <Form onSubmit={handleSubmit}>
+          <FormField
+            label="Nome da Categoria"
+            type="text"
+            name="title"
+            value={title}
+            onChange={(e) => setTitle(e.currentTarget.value)}
+            required
+          />
 
-        <FormField
-          label="Descrição"
-          type="text"
-          name="descricao"
-          value={descricao}
-          onChange={(e) => setDescricao(e.currentTarget.value)}
-        />
+          <FormField
+            label="Cor"
+            type="color"
+            name="color"
+            value={color}
+            onChange={(e) => setColor(e.currentTarget.value)}
+            required
+          />
 
-        <FormField
-          label="Cor"
-          type="color"
-          name="cor"
-          value={cor}
-          onChange={(e) => setCor(e.currentTarget.value)}
-        />
-
-        <ButtonSubmit type="submit">Cadastrar</ButtonSubmit>
-      </form>
-    </PageDefault>
+          <ButtonSubmit type="submit">Cadastrar</ButtonSubmit>
+        </Form>
+      </PageDefault>
+      {isLoading && <SpinnerLoader />}
+    </>
   );
 }
 

@@ -2,13 +2,12 @@ import { VideoIframeResponsive } from "./VideoIframeResponsive";
 import {
   BannerMainContainer,
   ContentAreaContainer,
-  WatchButton,
   Item,
   Title,
   Description,
 } from "./styles";
 
-function getYouTubeId(youtubeURL: string) {
+export function getYouTubeId(youtubeURL: string) {
   return youtubeURL.replace(
     /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/,
     "$7"
@@ -40,7 +39,6 @@ export function BannerMain({
 
         <Item>
           <VideoIframeResponsive videoID={youTubeID} />
-          <WatchButton>Assistir</WatchButton>
         </Item>
       </ContentAreaContainer>
     </BannerMainContainer>

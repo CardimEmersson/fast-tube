@@ -1,7 +1,10 @@
-import { videoDto } from "./videoDto";
+import { VideoDTO } from "./videoDto";
 
 export interface CategoryDTO {
-  titulo: string;
-  cor: string;
-  videos: videoDto[];
+  _id: string;
+  title: string;
+  color: string;
+  videos: VideoDTO[];
+  createdAt: Date;
+  updateAt: Date;
 }

@@ -1,9 +1,9 @@
-import { CategoryDTO } from "./categoryDto";
-
-export interface userDto {
-  id: number;
-  nome: string;
+export interface UserDTO {
+  _id: string;
+  id: string;
+  name: string;
   email: string;
-  foto: string;
-  categorias: CategoryDTO[];
+  photo: string;
+  createdAt: Date;
+  updateAt: string;
 }

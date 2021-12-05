@@ -1,4 +1,4 @@
-import { VideoCardContainer } from "./styles";
+import { VideoCardContainer, Container, VideoTitle } from "./styles";
 
 function getYouTubeId(youtubeURL: string) {
   return youtubeURL.replace(
@@ -18,13 +18,17 @@ function VideoCard({ videoTitle, videoURL, categoryColor }: VideoCardProps) {
     videoURL
   )}/hqdefault.jpg`;
   return (
-    <VideoCardContainer
-      url={image}
-      href={videoURL}
-      target="_blank"
-      style={{ borderColor: categoryColor || "red" }}
-      title={videoTitle}
-    />
+    <Container>
+      <VideoCardContainer
+        url={image}
+        href={videoURL}
+        target="_blank"
+        style={{ borderColor: categoryColor || "red" }}
+        title={videoTitle}
+      />
+
+      <VideoTitle>{videoTitle}</VideoTitle>
+    </Container>
   );
 }
 

@@ -6,8 +6,17 @@ import baseData from "../data/db.json";
 import dadosIniciais from "../data/dados_iniciais.json";
 import { Footer } from "components/Footer";
 import { withSSRAuth } from "utils/withSSRAuth";
+import axios from "axios";
+import { CategoryDTO } from "data/@types/categoryDto";
+import { UserDTO } from "data/@types/userDto";
 
-const Home: NextPage = () => {
+interface HomeProps {
+  data: {
+    categories: CategoryDTO[];
+  };
+}
+
+const Home: NextPage<HomeProps> = ({ data }) => {
   return (
     <div style={{ background: "#141414" }}>
       <Menu />
@@ -20,20 +29,14 @@ const Home: NextPage = () => {
         }
       />
 
-      <Carousel
-        ignoreFirstVideo
-        category={dadosIniciais.usuario.categorias[0]}
-      />
-
-      <Carousel category={dadosIniciais.usuario.categorias[1]} />
-
-      <Carousel category={dadosIniciais.usuario.categorias[2]} />
-
-      <Carousel category={dadosIniciais.usuario.categorias[3]} />
-
-      <Carousel category={dadosIniciais.usuario.categorias[4]} />
-
-      <Carousel category={dadosIniciais.usuario.categorias[5]} />
+      {data.categories &&
+        data.categories.map((category) => {
+          return (
+            category.videos.length > 0 && (
+              <Carousel key={category._id} category={category} />
+            )
+          );
+        })}
 
       <Footer />
     </div>
@@ -43,7 +46,23 @@ const Home: NextPage = () => {
 export default Home;
 
 export const getServerSideProps = withSSRAuth(async (ctx) => {
+  try {
+    const data = await axios
+      .get<CategoryDTO[]>("http://localhost:3000/api/list/categories")
+      .then((res) => res.data);
+
+    return {
+      props: {
+        data: data,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+  }
+
   return {
-    props: {},
+    props: {
+      data: [],
+    },
   };
 });

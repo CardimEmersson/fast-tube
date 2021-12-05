@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface VideoCardContainerProps {
   url: string;
+  title: string;
 }
 
 export const VideoCardContainer = styled.a<VideoCardContainerProps>`
@@ -32,4 +33,29 @@ export const VideoCardContainer = styled.a<VideoCardContainerProps>`
   &:not(:first-child) {
     margin-left: 20px;
   }
+
+  @media (max-width: 450px) {
+    width: 231px;
+    height: 130px;
+  }
+`;
+
+export const Container = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    span {
+      opacity: 1;
+    }
+  }
+`;
+
+export const VideoTitle = styled.span`
+  position: absolute;
+  opacity: 0;
+  color: var(--white);
+  transition: all 0.3s;
 `;

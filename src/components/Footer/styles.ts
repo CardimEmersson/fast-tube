@@ -9,7 +9,11 @@ export const FooterBase = styled.footer`
   padding-bottom: 32px;
   color: var(--white);
   text-align: center;
-  @media (max-width: 800px) {
-    margin-bottom: 50px;
+  margin-top: auto;
+
+  @media (max-width: 450px) {
+    img {
+      max-width: 150px;
+    }
   }
 `;

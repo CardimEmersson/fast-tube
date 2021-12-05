@@ -26,6 +26,7 @@ export const Container = styled.ul`
 `;
 
 export const SliderItem = styled.li`
+  position: relative;
   margin-right: 16px;
   img {
     margin: 16px;

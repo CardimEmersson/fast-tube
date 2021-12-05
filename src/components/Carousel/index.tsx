@@ -1,38 +1,30 @@
-import { VideoCardGroupContainer, Title, ExtraLink } from "./styles";
+import { VideoCardGroupContainer, Title } from "./styles";
 import { VideoCard } from "./VideoCard";
 import { Slider, SliderItem } from "./Slider";
 import { CategoryDTO } from "data/@types/categoryDto";
 
 interface CarouselProps {
-  ignoreFirstVideo?: boolean;
   category: CategoryDTO;
 }
 
-function Carousel({ ignoreFirstVideo, category }: CarouselProps) {
-  const categoryTitle = category.titulo;
-  const categoryColor = category.cor;
-  const videos = category.videos;
+function Carousel({ category }: CarouselProps) {
   return (
     <VideoCardGroupContainer>
-      {categoryTitle && (
+      {category.title && (
         <>
-          <Title style={{ backgroundColor: categoryColor || "red" }}>
-            {categoryTitle}
+          <Title style={{ backgroundColor: category.color || "#1DB954" }}>
+            {category.title}
           </Title>
         </>
       )}
       <Slider>
-        {videos.map((video, index) => {
-          if (ignoreFirstVideo && index === 0) {
-            return null;
-          }
-
+        {category.videos.map((video, index) => {
           return (
-            <SliderItem key={video.titulo}>
+            <SliderItem key={index}>
               <VideoCard
-                videoTitle={video.titulo}
+                videoTitle={video.title}
                 videoURL={video.url}
-                categoryColor={categoryColor}
+                categoryColor={category.color}
               />
             </SliderItem>
           );

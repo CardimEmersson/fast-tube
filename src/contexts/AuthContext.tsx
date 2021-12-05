@@ -3,12 +3,14 @@ import Router from "next/router";
 import { setCookie, parseCookies, destroyCookie } from "nookies";
 
 interface User {
+  id: string;
   email: string;
   name: string;
   photo: string;
 }
 
 interface SignInCredentials {
+  id: string;
   token: string;
   email: string;
   name: string;
@@ -24,6 +26,7 @@ export const AuthContext = createContext({} as AuthContextData);
 
 export function signOut() {
   destroyCookie(undefined, "fasttube.email");
+  destroyCookie(undefined, "fasttube.id");
   destroyCookie(undefined, "fasttube.name");
   destroyCookie(undefined, "fasttube.photo");
   destroyCookie(undefined, "fasttube.token");
@@ -38,8 +41,13 @@ interface AuthProviderProps {
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>();
 
-  async function signIn({ email, name, photo, token }: SignInCredentials) {
+  async function signIn({ id, email, name, photo, token }: SignInCredentials) {
     try {
+      setCookie(undefined, "fasttube.id", id, {
+        maxAge: 60 * 60 * 24 * 30, //30 days
+        path: "/",
+      });
+
       setCookie(undefined, "fasttube.token", token, {
         maxAge: 60 * 60 * 24 * 30, //30 days
         path: "/",
@@ -61,6 +69,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       });
 
       setUser({
+        id,
         email,
         name,
         photo,
@@ -75,6 +84,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   useEffect(() => {
     const { "fasttube.token": token } = parseCookies();
+    const { "fasttube.id": id } = parseCookies();
     const { "fasttube.email": email } = parseCookies();
     const { "fasttube.name": name } = parseCookies();
     const { "fasttube.photo": photo } = parseCookies();
@@ -83,6 +93,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       signOut();
     } else {
       setUser({
+        id,
         email,
         name,
         photo,

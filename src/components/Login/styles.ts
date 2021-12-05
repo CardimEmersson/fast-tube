@@ -21,6 +21,10 @@ export const LoginForm = styled.div`
   @media (max-width: 768px) {
     width: 80%;
   }
+
+  @media (max-width: 450px) {
+    width: 90%;
+  }
 `;
 
 export const Logo = styled.img`
@@ -106,5 +110,5 @@ export const GithubButton = styled.button`
 export const TextButton = styled.span`
   margin-left: 1rem;
   font-weight: bold;
-  font-size: 1.4rem;
+  font-size: 1rem;
 `;
