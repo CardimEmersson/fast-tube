@@ -1,5 +1,5 @@
 import { PageDefault } from "components/PageDefault";
-import { Container, PreviewContainer, TextPreview } from "./styles";
+import { Container, PreviewContainer, TextPreview } from "styles/videoStyles";
 import { Title } from "components/Title";
 import { FormField, ButtonSubmit, Option } from "components/FormField";
 import { FormEvent, useContext, useEffect, useState } from "react";

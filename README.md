@@ -14,16 +14,16 @@ através de suas contas sociais, a exemplo: facebook, google, github, etc.
 - [X] O sistema deve permitir somente a entrada de
 usuários logados através de contas sociais.
 
-- [] O sistema deve permitir que o usuário visualize
+- [x] O sistema deve permitir que o usuário visualize
 vídeos já cadastrados no sistema por outros usuários.
 
-- [] O sistema deve permitir que o usuário cadastre um
+- [x] O sistema deve permitir que o usuário cadastre um
 novo vídeo.
 
-- [] O sistema deve permitir que o usuário remova seus
+- [x] O sistema deve permitir que o usuário remova seus
 vídeos.
 
-- [] O sistema deve permitir que o usuário remova sua
+- [x] O sistema deve permitir que o usuário remova sua
 conta.
 
 

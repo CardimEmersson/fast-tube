@@ -9,7 +9,7 @@ import {
   Url,
   TitleVideo,
   ButtonIcon,
-} from "./styles";
+} from "styles/myVideoStyles";
 import axios, { AxiosError } from "axios";
 import { Title } from "components/Title";
 import { withSSRAuth } from "utils/withSSRAuth";
