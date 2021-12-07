@@ -83,9 +83,9 @@ function MyVideos() {
           <Title>Meus Videos</Title>
 
           {categories.map((category) => {
-            return category.videos.map((video) => {
+            return category.videos.map((video, index) => {
               return (
-                <CardMyVideo key={video._id}>
+                <CardMyVideo key={index}>
                   <ImageVideo src={getThumbnail(video.url)} alt={video.title} />
 
                   <WrapperContent>

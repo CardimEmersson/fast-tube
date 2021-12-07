@@ -15,6 +15,10 @@ const listVideos = async (request: VercelRequest, response: VercelResponse) => {
 
     const userVideos = await videos
       .map((category) => {
+        category.videos = category.videos.filter((video: any) => {
+          return video.userId === userId;
+        });
+
         return category;
       })
       .toArray();
