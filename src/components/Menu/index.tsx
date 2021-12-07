@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { ButtonLink } from "./ButtonLink";
+import { parseCookies } from "nookies";
+import axios, { AxiosError } from "axios";
 
 import {
   Logo,
@@ -17,12 +19,31 @@ import {
   DropdownWrapper,
   ButtonMyVideo,
 } from "./styles";
+import { toast } from "react-toastify";
 
 function Menu() {
   const router = useRouter();
   const { user } = useContext(AuthContext);
 
   const [activeDropdown, setActiveDropdown] = useState(false);
+
+  async function deleteAccount() {
+    const { "fasttube.id": userId } = parseCookies();
+
+    await axios
+      .post(`/api/delete/user?userId=${userId}`)
+      .then((res) => {
+        toast.success(res.data.message);
+        router.push("/login");
+      })
+      .catch((err: AxiosError) => {
+        if (err.response?.data.message) {
+          toast.error(err.response?.data.message);
+        } else {
+          toast.error("Não foi possivél excluir a conta");
+        }
+      });
+  }
 
   return (
     <Container>
@@ -55,7 +76,9 @@ function Menu() {
         <ButtonLink href={"/cadastro/video"}>Novo vídeo</ButtonLink>
         <ButtonLink href="/cadastro/categoria">Nova categoria</ButtonLink>
         <DropdownWrapper>
-          <Button type="button">Excluir Conta</Button>
+          <Button type="button" onClick={deleteAccount}>
+            Excluir Conta
+          </Button>
           <Button type="button" onClick={signOut}>
             Sair
           </Button>

@@ -1,4 +1,4 @@
-import { useState, FormEvent, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { PageDefault } from "components/PageDefault";
 import {
   Container,
@@ -14,48 +14,42 @@ import axios, { AxiosError } from "axios";
 import { Title } from "components/Title";
 import { withSSRAuth } from "utils/withSSRAuth";
 import { toast } from "react-toastify";
-import { FaRegTrashAlt } from "react-icons/fa";
 import { BsTrash } from "react-icons/bs";
 
 import { SpinnerLoader } from "components/SpinnerLoader";
 import { CategoryDTO } from "data/@types/categoryDto";
 import { parseCookies } from "nookies";
 import { getThumbnail } from "utils/youtubeVideo";
+import { useRouter } from "next/router";
 
 function MyVideos() {
   const [isLoading, setIsLoading] = useState(false);
   const [categories, setCategories] = useState<CategoryDTO[]>([]);
-  const [title, setTitle] = useState("");
-  const [color, setColor] = useState("");
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const router = useRouter();
+
+  async function deleteVideo(urlVideo: string) {
     setIsLoading(true);
+    const { "fasttube.id": userId } = parseCookies();
 
     await axios
-      .post("/api/create/category", {
-        title,
-        color,
+      .post(`/api/delete/video?userId=${userId}`, {
+        url: urlVideo,
       })
       .then((res) => {
         toast.success(res.data.message);
-        setTitle("");
-        setColor("");
+        fillVideos();
       })
       .catch((err: AxiosError) => {
         if (err.response?.data.message) {
           toast.error(err.response?.data.message);
         } else {
-          toast.error("Não foi possivél cadastrar a categoria");
+          toast.error("Não foi possivél excluir o video");
         }
       });
 
     setIsLoading(false);
   }
-
-  // const image = `https://img.youtube.com/vi/${getYouTubeId(
-  //   videoURL
-  // )}/hqdefault.jpg`;
 
   async function fillVideos() {
     setIsLoading(true);
@@ -73,6 +67,10 @@ function MyVideos() {
 
     setIsLoading(false);
   }
+
+  const refreshData = () => {
+    router.replace(router.asPath);
+  };
 
   useEffect(() => {
     fillVideos();
@@ -100,7 +98,7 @@ function MyVideos() {
                     </Url>
                   </WrapperContent>
 
-                  <ButtonIcon>
+                  <ButtonIcon onClick={() => deleteVideo(video.url)}>
                     <BsTrash size="2.5rem" />
                   </ButtonIcon>
                 </CardMyVideo>

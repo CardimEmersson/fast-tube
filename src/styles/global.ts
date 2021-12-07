@@ -31,6 +31,11 @@ a {
   text-decoration: none;
   transition: opacity 0.3s ease 0s;
 }
+
+// Bars progress
+.bar-of-progress {
+	z-index: 50;
+}
 `;
 
 export default GlobalStyles;
