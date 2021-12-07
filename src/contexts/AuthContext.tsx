@@ -25,13 +25,27 @@ interface AuthContextData {
 export const AuthContext = createContext({} as AuthContextData);
 
 export function signOut() {
-  destroyCookie(undefined, "fasttube.email");
-  destroyCookie(undefined, "fasttube.id");
-  destroyCookie(undefined, "fasttube.name");
-  destroyCookie(undefined, "fasttube.photo");
-  destroyCookie(undefined, "fasttube.token");
+  try {
+    destroyCookie(undefined, "fasttube.email", {
+      path: "/",
+    });
+    destroyCookie(undefined, "fasttube.id", {
+      path: "/",
+    });
+    destroyCookie(undefined, "fasttube.name", {
+      path: "/",
+    });
+    destroyCookie(undefined, "fasttube.photo", {
+      path: "/",
+    });
+    destroyCookie(undefined, "fasttube.token", {
+      path: "/",
+    });
 
-  Router.push("/login");
+    Router.push("/login");
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 interface AuthProviderProps {

@@ -31,7 +31,7 @@ const deleteUser = async (request: VercelRequest, response: VercelResponse) => {
 
     return response
       .status(200)
-      .json({ message: "Usuário deletado com sucesso!" });
+      .json({ message: "Sua conta foi excluida com sucesso!" });
   } catch (err) {
     console.log(err);
   }

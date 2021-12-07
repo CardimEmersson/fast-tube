@@ -20,21 +20,28 @@ import {
   ButtonMyVideo,
 } from "./styles";
 import { toast } from "react-toastify";
+import { SpinnerLoader } from "components/SpinnerLoader";
+import { destroyCookie } from "nookies";
+
 
 function Menu() {
   const router = useRouter();
   const { user } = useContext(AuthContext);
 
   const [activeDropdown, setActiveDropdown] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function deleteAccount() {
+    setIsLoading(true);
     const { "fasttube.id": userId } = parseCookies();
 
     await axios
-      .post(`/api/delete/user?userId=${userId}`)
+      .delete(`/api/delete/user?userId=${userId}`)
       .then((res) => {
         toast.success(res.data.message);
-        router.push("/login");
+
+        setIsLoading(false);
+        signOut();
       })
       .catch((err: AxiosError) => {
         if (err.response?.data.message) {
@@ -42,49 +49,53 @@ function Menu() {
         } else {
           toast.error("Não foi possivél excluir a conta");
         }
+        setIsLoading(false);
       });
   }
 
   return (
-    <Container>
-      <Link href="/" passHref>
-        <Logo src={"/assets/logo.png"} alt="FastTube logo" />
-      </Link>
+    <>
+      <Container>
+        <Link href="/" passHref>
+          <Logo src={"/assets/logo.png"} alt="FastTube logo" />
+        </Link>
 
-      <RightWrapper>
-        <ButtonLink href={"/cadastro/video"}>Novo vídeo</ButtonLink>
-        <ButtonLink href="/cadastro/categoria">Nova categoria</ButtonLink>
+        <RightWrapper>
+          <ButtonLink href={"/cadastro/video"}>Novo vídeo</ButtonLink>
+          <ButtonLink href="/cadastro/categoria">Nova categoria</ButtonLink>
 
-        {user && (
-          <>
-            <UserWrapper>
-              <UserName>{user?.name}</UserName>
-            </UserWrapper>
+          {user && (
+            <>
+              <UserWrapper>
+                <UserName>{user?.name}</UserName>
+              </UserWrapper>
 
-            <UserPhoto
-              src={user?.photo}
-              onClick={() => setActiveDropdown(!activeDropdown)}
-            />
-          </>
-        )}
-      </RightWrapper>
+              <UserPhoto
+                src={user?.photo}
+                onClick={() => setActiveDropdown(!activeDropdown)}
+              />
+            </>
+          )}
+        </RightWrapper>
 
-      <UserDropdown active={activeDropdown}>
-        <ButtonMyVideo onClick={() => router.push("/meus-videos")}>
-          Meus Videos
-        </ButtonMyVideo>
-        <ButtonLink href={"/cadastro/video"}>Novo vídeo</ButtonLink>
-        <ButtonLink href="/cadastro/categoria">Nova categoria</ButtonLink>
-        <DropdownWrapper>
-          <Button type="button" onClick={deleteAccount}>
-            Excluir Conta
-          </Button>
-          <Button type="button" onClick={signOut}>
-            Sair
-          </Button>
-        </DropdownWrapper>
-      </UserDropdown>
-    </Container>
+        <UserDropdown active={activeDropdown}>
+          <ButtonMyVideo onClick={() => router.push("/meus-videos")}>
+            Meus Videos
+          </ButtonMyVideo>
+          <ButtonLink href={"/cadastro/video"}>Novo vídeo</ButtonLink>
+          <ButtonLink href="/cadastro/categoria">Nova categoria</ButtonLink>
+          <DropdownWrapper>
+            <Button type="button" onClick={deleteAccount}>
+              Excluir Conta
+            </Button>
+            <Button type="button" onClick={() => signOut()}>
+              Sair
+            </Button>
+          </DropdownWrapper>
+        </UserDropdown>
+      </Container>
+      {isLoading && <SpinnerLoader />}
+    </>
   );
 }
 

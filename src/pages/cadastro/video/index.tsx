@@ -103,7 +103,6 @@ function CadastroVideo() {
               label="Categoria"
               fieldType="select"
               name="category"
-              defaultValue=""
               value={categorieSelected}
               onChangeSelect={(e) => {
                 setCategorieSelected(e.currentTarget.value);
