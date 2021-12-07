@@ -35,4 +35,4 @@ conta.
 ![Diagrama de sequência](https://user-images.githubusercontent.com/63078277/140590845-8fc36187-2ab7-40bf-81ce-78d38e01012a.png)
 
 ## Estrutura dos dados
-![image](https://user-images.githubusercontent.com/63078277/140588623-c9ff294d-2cf6-4080-862f-a28c448d0276.png)
+![image](https://user-images.githubusercontent.com/63078277/145120574-4416c7d9-6926-4d13-be8a-9bfd66d510e7.png)
