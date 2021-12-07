@@ -46,7 +46,7 @@ export default Home;
 export const getServerSideProps = withSSRAuth(async (ctx) => {
   try {
     const data = await axios
-      .get<CategoryDTO[]>("http://localhost:3000/api/list/categories")
+      .get<CategoryDTO[]>("https://fast-tube.vercel.app/api/list/categories")
       .then((res) => res.data);
 
     return {
