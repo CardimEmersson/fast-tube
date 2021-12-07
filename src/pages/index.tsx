@@ -3,12 +3,10 @@ import { Carousel } from "components/Carousel";
 import { Menu } from "components/Menu";
 import type { NextPage } from "next";
 import baseData from "../data/db.json";
-import dadosIniciais from "../data/dados_iniciais.json";
 import { Footer } from "components/Footer";
 import { withSSRAuth } from "utils/withSSRAuth";
 import axios from "axios";
 import { CategoryDTO } from "data/@types/categoryDto";
-import { UserDTO } from "data/@types/userDto";
 
 interface HomeProps {
   data: {
